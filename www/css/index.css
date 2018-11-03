@@ -237,8 +237,9 @@ transform: translateY(-50%);
 }
 
 .container-results{
-	padding:15px;
-	width:95%;
+	padding-left:15px;
+	padding-right:10px;
+	width:92%;
 	font-size:20px;
 }
 
