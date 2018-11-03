@@ -24,17 +24,17 @@ body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#E4E4E4;
-    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    /*background-color:#E4E4E4;
+    background-image:linear-gradient(top, #000 0%, #000 51%);
+    background-image:-webkit-linear-gradient(top, #000 0%, #000 51%);
+    background-image:-ms-linear-gradient(top, #000 0%, #000 51%);
     background-image:-webkit-gradient(
         linear,
         left top,
         left bottom,
-        color-stop(0, #A7A7A7),
-        color-stop(0.51, #E4E4E4)
-    );
+        color-stop(0, #000),
+        color-stop(0.51, #000)
+    );*/
     background-attachment:fixed;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:12px;
@@ -45,28 +45,15 @@ body {
     width:100%;
 }
 
-/* Portrait layout (default) */
-.app {
-    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
-    position:absolute;             /* position in the center of the screen */
-    left:50%;
-    top:50%;
-    height:50px;                   /* text area height */
-    width:225px;                   /* text area width */
-    text-align:center;
-    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
-                                   /* offset horizontal: half of text area width */
+p{
+	text-transform:none;
+	font-size:15px;
 }
+
 
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
-    .app {
-        background-position:left center;
-        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
-        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
-                                      /* offset horizontal: half of image width and text area width */
-    }
+    
 }
 
 h1 {
@@ -88,12 +75,12 @@ h1 {
 }
 
 .event.listening {
-    background-color:#333333;
+    background-color:#FFFFFF;
     display:block;
 }
 
 .event.received {
-    background-color:#4B946A;
+    background-color:#FFFFFF;
     display:none;
 }
 
@@ -112,4 +99,285 @@ h1 {
 .blink {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
+}
+
+.colorPrimary{
+	background:#0072bc;
+	color: #0072bc;
+}
+
+.header{
+	background:#0072bc;
+	text-align:left;
+	padding-left:20px;
+	padding-top:10px;
+	padding:15px;
+}
+
+.header h1{
+	color:white;
+	font-size:25px;
+	margin-left:-30px;
+}
+
+.header p{
+	color:white;
+	font-size:30px;
+}
+
+.container{
+	background: #FFF;
+	width:100%;
+}
+
+.logo{
+	text-align:center;
+}
+
+.logo img{
+	width:auto;
+	height:auto;
+	max-width:250px;
+}
+
+.search{
+	background:#0072bc;
+	width:90%;
+	margin-left:5%;
+	border-radius:20px;
+	text-align:center;
+	color:white;
+	padding-top:10px;
+	padding-bottom:60px;
+}
+
+.search h3{
+	font-size:20px;
+}
+
+.inputs input, .inputs select{
+	border:none;
+	border-radius:10px;
+	height:40px;
+	width:80%;
+	margin-top:10px;
+	font-size:20px;
+	background:white;
+}
+
+.btn-search{
+	background:#eba100;
+	color:white;
+	font-weight:bold;
+	border:none;
+	border-radius:10px;
+	height:40px;
+	width:80%;
+	margin-top:10px;
+	font-size:20px;
+}
+
+.dropdown{
+	color:black;
+}
+
+.icon-left{
+	float:left;
+	margin-top:0px;
+}
+
+.aba{
+	left:10px;
+}
+
+.menu{
+	float:right;
+	margin-top:-60px;
+	font-size:15px;
+}
+
+.foo{
+	width:100%;
+	height:800px;
+	background:#0072bc;
+	text-align:center;
+}
+
+.foo2{
+position: relative;
+top: 40%;
+transform: translateY(-50%); 
+}
+
+.menu ul{
+	list-style:none;
+	background:white;
+	border-radius:10px;
+	padding:5px;
+	padding-left:25px;
+	padding-right:25px;
+	font-size:30px;
+	position:absolute;
+	margin-left:-46%;
+	display:none;
+	margin-top:-15px;
+	-webkit-box-shadow: 3px 3px 1px #fc8;
+}
+
+.menu ul li{
+	width:100%;
+}
+
+.ini{
+	background:#0072bc;
+	color:white;
+	text-align:center;
+	padding:3px;
+	font-size:15px;
+}
+
+.container-results{
+	padding:15px;
+	width:100%;
+	font-size:20px;
+}
+
+.border{
+	border-bottom:1px solid gray;
+	float:left;
+	width:100%;
+	margin-top:-10px;
+}
+
+.container-results p{
+	margin-top:1px;
+}
+
+.results p{
+	font-size:20px;
+}
+
+.container-results .endereco{
+font-size:15px;
+margin-top:-3px;
+}
+
+.container-results .telefone{
+font-size:15px;
+margin-top:-3px;
+}
+
+.empresa{
+	width:100%;
+}
+
+.dados{
+	width:60%;
+	float:left;
+	padding-bottom:10px;
+}
+
+.dados p{
+	font-size:20px;
+}
+
+.logo-empresa{
+	max-width:80px;
+    max-height:50px;
+    width: auto;
+    height: auto;
+	float:right;
+	border:1px solid #0072bc;
+	border-radius:10px;
+	padding:10px;
+	padding-top:20px;
+	padding-bottom:20px;
+	margin-right:20px;
+}
+
+.nome{
+	font-weight:bold;
+}
+
+.imagemDestaque{
+	height:200px;
+	width:100%;
+	position:absolute;
+}
+
+.imagemDestaque img{
+	height:100%;
+	width:100%;
+	border-bottom: 4px solid #0072bc;
+}
+
+.imagem{
+	width:50px;
+	height:50px;
+}
+
+.dadosPreview{
+	 width:55%;
+	 font-size:15px;
+	 padding:0px;
+	 float:left;
+	 margin-top:210px;
+}
+
+.dadosPreview p{
+	 margin-top:8px;
+}
+
+.preview .logo-empresa{
+	margin-top:40px;
+	margin-top:200px;
+}
+
+.container-dados{
+	background:#e5e5e5;
+	width:98%;
+	float:left;
+	padding-bottom:10px;
+	padding-left:2%;
+}
+
+.sobre{
+	background:white;
+	width:94%;
+	margin-top: 10px;
+	padding-top:10px;
+	padding-left:2%;
+	padding-bottom:10px;
+}
+
+.sobre h3{
+	font-size:30px;
+}
+
+.sobre p{
+	font-size:16px;
+}
+
+.sobre img{
+    width: 100px;
+    height: 100px;
+}
+
+.container-galery{
+	width:100%;
+	height:100%;
+	background:#000;
+	text-align:center;
+}
+
+.container-galery img{
+	 max-width:500px;
+    max-height:500px;
+    width: auto;
+    height: auto;
+	
+}
+
+.container-sobre a{
+	color:#0072bc;
 }
