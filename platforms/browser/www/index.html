@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+     <link rel="stylesheet" type="text/css" href="css/index.css" />
+	<link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <title>Divulga BR</title>
+</head>
+
+<body>	
+
+<div id="foo" class="foo" >
+	<div class="foo2" style="text-decoration:none; background:white; border-radius:5px; width:80%; margin-left:10%;  padding-top:15px; padding-bottom:15px;"><h1 style="font-size:30px"><span style="color:#0072bc">Divulga</span> <span style="background:#0072bc; padding:5px; border-radius:5px"><span style="color:#00FF00">B</span><span style="color:yellow">R</span></span></h1></div>
+</div>
+
+    <div class="container">
+	<div class="header">
+		<a onClick="voltar()"><p class="fa icon-left"><i class="fa fa-chevron-left" aria-hidden="true"></i></p></a>
+		<h1 class="aba">Inicio</h1>
+		<h1 class="menu">
+			<p class="dispar"><i class="fa fa-list" aria-hidden="true"></i></p>
+			<ul class="dropdown">
+				<li><a onClick="exibePagina('container-sobre')">Sobre</a></li>
+				<li><a onClick="exibePagina('search')">Pesquisar</a></li>
+			</ul>
+		</h1>
+	</div>
+		<div class="logo">
+			<img src="img/logo.png"/>
+		</div>
+		<div id="carregando"><img src="img/loading.gif" style="display:none"></div>
+		<div class="search">
+			<h3>Pesquisar</h3>
+			<div class="inputs">
+				<input class="" id="nome" placeholder=" Nome da empresa">
+				<select class="estado" id="estado">
+					<option id="estadoOption">ESTADO</option>
+				</select>
+				<select class="cidade" id="cidade">
+					<option value="">CIDADE</option>
+				</select>
+				<select class="categoria" id="categorias">
+					<option>CATEGORIA</option>
+				</select>
+				<select class="distancia" id="distancia">
+					<option value="0">DISTÂNCIA(KM)</option>
+					<option>5</option>
+					<option>10</option>
+					<option>15</option>
+					<option>20</option>
+					<option>25</option>
+					<option>30</option>
+					<option>35</option>
+					<option>40</option>
+					<option>45</option>
+					<option>50</option>
+					<option>60</option>
+					<option>70</option>
+					<option>80</option>
+					<option>90</option>
+					<option>100</option>
+				</select>
+				<a onClick="exibePagina('results')"><button class="btn-search">BUSCAR</div></a>
+				
+			</div>
+			<div class="results" style="display:none">
+				<div class="ini"><p>Mostrando Resultados</p></div>
+				<div class="modifica">
+				
+				</div>
+				<div class="container-resultsOff" width="100%" style="text-align:center; margin-top:200px;">
+							<p width="100%" class="endereco">Nenhum Resultado Encontrado</p>
+						</div>
+			</div>
+			</div>
+			<div class="preview" style="display:none">
+			<div class="header">
+	<a onClick="voltarResults()"><p class="icon-left"><i class="fa fa-chevron-left" aria-hidden="true"></i></p></a>
+		<h1 class="aba">Inicio</h1>
+		<div class="menu">
+			<p class="dispar"><i class="fa fa-list" aria-hidden="true"></i></p>
+			<ul class="dropdown">
+				<li><a onClick="exibePagina('container-sobre')">Sobre</a></li>
+				<li><a onClick="returnSearch()">Pesquisar</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="content">
+					
+			</div>
+			</div>
+			<div class="container-galery" style="display:none">
+			<div class="recuo"></div>
+			<div class="header">
+	<a onClick="voltarPreview()"><p class="icon-left"><i class="fa fa-chevron-left" aria-hidden="true"></i></p></a>
+		<h1 class="aba">Imagem</h1>
+		<div class="menu">
+			<p class="dispar"><i class="fa fa-list" aria-hidden="true"></i></p>
+			<ul class="dropdown">
+				<li><a onClick="exibePagina('container-sobre')">Sobre</a></li>
+				<li><a onClick="returnSearch()">Pesquisar</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="imagemFull">
+				
+				</div>
+			</div>
+			<div class="container-sobre" style="display:none">
+				<div class="header">
+	<a onClick="voltar()"><p class="icon-left"><i class="fa fa-chevron-left" aria-hidden="true"></i></p></a>
+		<h1 class="aba">Sobre</h1>
+		<div class="menu">
+			<p class="dispar"><i class="fa fa-list" aria-hidden="true"></i></p>
+			<ul class="dropdown">
+				<li><a onClick="exibePagina('container-sobre')">Sobre</a></li>
+				<li><a onClick="returnSearch()">Pesquisar</a></li>
+			</ul>
+		</div>
+	</div>
+		<div class="logo">
+			<img src="img/logo.png"/>
+			<p class="infodev">Desenvolvido por <a class="link" onclick="window.open('http://higorpedroso.com.br', '_system');">Higor Pedroso</a></p>
+			<div class="sobreid"></div>
+		</div>
+			</div>
+			</div>
+			
+		</div>
+	</div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script  type="text/javascript" src="js/controller.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+	<script>
+	$('.container').hide();
+setTimeout(function(){$('.container').show();}, 5000);
+	$('#foo').fadeIn().fadeOut(5000);
+	 
+		$(".dispar").click(function(){
+    $(".dropdown").slideToggle();
+});
+	</script>
+	<script>
+	
+	function escondePaginas(){
+		$('.results').hide();
+		$('.search').hide();
+		$('.preview').hide();
+	}
+	
+	function escondeContainer(){
+		$('.container').hide();
+	}
+	
+	function exibePagina(idPagina){
+		escondePaginas();
+		$('.dropdown').hide();
+		if(idPagina == "results"){
+			$('.aba').text('Resultados');
+                var vNome = $("#nome").val(); 
+                var vEstado = $(".estado").val(); 
+                var vCidade= $("#cidade").val(); 
+                var vCategoria = $("#categorias").val(); 
+				var distancia = $('#distancia').val();
+				
+				if(distancia != 0 ){
+				localizarsempre();
+				}else{
+				
+                   $.ajax({
+    url : 'https://divulgabr.com.br/aplicativo/resultados.php',
+    type : 'post',
+    data : {'nome':vNome, 'idEstado': vEstado,'idCidade': vCidade, 'idCategoria': vCategoria},
+    dataType: 'html',
+    beforeSend: function(){
+      $('#carregando').fadeIn(); 
+$(".container-resultsOff").hide();	  
+    },
+    timeout: 3000,    
+    success: function(retorno){
+
+	  if(retorno != "null"){
+	  
+	  var data = JSON.parse(retorno);
+	  var item = "";	  
+	 
+	  $.each(data,function(i, data){
+		item += '<a onClick="exibePaginaBase('+ data.idEmpresa + ')">';
+		item += '<div class="container-results">';
+		item += '<div class="empresa">';		
+		item += '<div class="dados">';
+		item += '<p  class="nome" id="nome' + data.idEmpresa +'">' + data.nomeEmpresa + '</p>';	
+		item += '<p class="endereco">' + data.endereco + '</p>';
+		item += '<p class="telefone"><i class="fa fa-phone" aria-hidden="true"></i> ' + data.telefone + '</p>';
+		item += '</div>';
+		item += '<div class="logo-empresa">';
+		item += '<img style="width:100%;" src="https://divulgabr.com.br/admin/logos/' + data.logo +'" ></div>';
+		item += '</div>';
+		item += '</div>';
+		item += '</a>';
+		item += "<div class='border'></div>";
+		
+                    //$("#estadoOption").append(data.nome)
+				
+                });
+	 
+	 $(".modifica").html(item);
+	  }else{
+	   $(".container-resultsOff").show();
+	   $(".modifica").hide();
+	  }
+    },
+    error: function(erro){
+      
+    }       
+            });
+			}
+            
+		}else if(idPagina == "container-galery"){
+			$('.aba').text('Imagem');
+		}else if(idPagina == "container-sobre"){
+			escondeContainer();
+			$('.aba').text('Sobre');
+			 $.ajax({
+    url : 'https://divulgabr.com.br/aplicativo/sobre.php',
+    type : 'post',
+    //data : {},
+    dataType: 'html',
+    beforeSend: function(){
+      //$('#carregando').fadeIn();   
+    },
+    timeout: 3000,    
+    success: function(retorno){
+
+	 var data = JSON.parse(retorno);
+	 var item = "";	  
+	 
+	  $.each(data,function(i, data){
+	  item += "<p>" + data.sobre + "</p>";
+	 });
+	 $('.sobreid').html(item);
+	 
+    },
+    error: function(erro){
+      
+    }       
+            });
+			
+			$.ajax({
+				  
+    url : 'https://divulgabr.com.br/aplicativo/link.php',
+    type : 'post',
+    //data : {'id':idEmpresa},
+    dataType: 'html',
+    beforeSend: function(){ 
+    },
+    timeout: 3000,    
+    success: function(retorno){
+	
+	  if(retorno != "null"){
+	  
+	  var data = JSON.parse(retorno);
+	  var item = "";
+	 
+	  $.each(data,function(i, data){
+		var link = data.link;
+		var funcao = "window.open('" + link +"', '_system');";
+	
+		item +=					'Desenvolvido por <a onclick=' + funcao + '>Higor Pedroso</a>';		
+	
+                });
+	 
+	  $(".infodev").html(item);
+	  }else{
+	   //$(".container-resultsOff").show();
+	   //$(".modifica").hide();
+	  }
+    },
+    error: function(erro){
+      
+    }       
+            });
+			
+		}
+		
+		 $('.' + idPagina).fadeIn('show');
+	}
+	
+	function exibePaginaBase(idEmpresa){
+		escondePaginas();
+		escondeContainer();
+		
+		$('.preview').show();
+		
+				var vID = $("#nome" + idEmpresa).text(); 
+                   $.ajax({
+				  
+    url : 'https://divulgabr.com.br/aplicativo/empresa.php',
+    type : 'post',
+    data : {'idEmpresa':vID},
+    dataType: 'html',
+    beforeSend: function(){ 
+    },
+    timeout: 3000,    
+    success: function(retorno){
+
+	  if(retorno != "null"){
+	  
+	  var data = JSON.parse(retorno);
+	  var item = "";
+	  
+	 
+	  $.each(data,function(i, data){
+	  $('.aba').text(data.nomeEmpresa);
+		item += '<div class="imagemDestaque"><img src="http://divulgabr.com.br/admin/imagemDestaque/' + data.imagemDestaque +'"/></div>';
+		item +=			'<div class="dadosPreview">';
+		item +=				'<p><i class="fa fa-map-marker" aria-hidden="true"></i> ' + data.endereco + '</p>';
+		item +=				'<p><i class="fa fa-phone" aria-hidden="true"></i> ' + data.telefone + '</p>'
+		item +=				'<p><i class="fa fa-phone" aria-hidden="true"></i> ' + data.telefone2 + '</p>'
+		item +=				'<p><i class="fa fa-envelope" aria-hidden="true"></i> ' + data.email + '</p>';
+		item +=				'<p><i class="fa fa-internet-explorer" aria-hidden="true"></i> ' + data.site + '</p>';
+		item +=			'</div>';
+		item +=			'<div class="logo-empresa">'
+		item +=				'<img style="width:100%;" src="http://divulgabr.com.br/admin/logos/' + data.logo + '" ></div>';
+					
+		item +=			'<div class="container-dados">';
+		item +=				'<div class="sobre">';
+		item +=					'<h3>Sobre</h3>';
+		item +=					'<p>' + data.sobre + '</p>';
+		item +=				'</div>';
+		item +=				'<div class="sobre horarios">';
+		item +=					'<h3>Horários</h3>';
+		item +=					'<p>Segunda - Sexta: 11AM - 16PM</p>';
+		item +=					'<p>Sabado: Fechado</p>';
+		item +=					'<p>Domingo: Fechado</p>';
+		item +=				'</div>';
+		item +=				'<div class="sobre facilidades">';
+		item +=					'<h3>Facilidades</h3>';
+		item +=					'<p> </p>';
+		item +=				'</div>';
+		item +=				'<div class="sobre galeria">';
+	
+		item +=				'</div>';
+		item +=			'</div>';
+                });
+	 
+	  $(".content").html(item);
+	  }else{
+	   //$(".container-resultsOff").show();
+	   //$(".modifica").hide();
+	  }
+    },
+    error: function(erro){
+      
+    }       
+            });
+			
+			$.ajax({
+				  
+    url : 'https://divulgabr.com.br/aplicativo/horario.php',
+    type : 'post',
+    data : {'idEmpresa':vID},
+    dataType: 'html',
+    beforeSend: function(){ 
+    },
+    timeout: 3000,    
+    success: function(retorno){
+
+	  if(retorno != "null"){
+	  
+	  var data = JSON.parse(retorno);
+	  var item = "";
+	  
+	 
+	  $.each(data,function(i, data){
+
+		item +=					'<h3>Horários</h3>';
+		
+		
+		if(data.sabado.lenght() == 0){
+		item +=					'<p>Sabado: Fechado</p>';
+		}else{
+		item +=					'<p>Sabado: ' + data.sabado + '</p>';
+		}
+		
+		if(data.sabado.lenght() == 0){
+		item +=					'<p>Domingo: Fechado</p>';
+		}else{
+		item +=					'<p>Domingo: ' + data.domingo + '</p>';
+		}
+		
+		
+
+                });
+	 
+	  $(".horarios").html(item);
+	  }else{
+	   //$(".container-resultsOff").show();
+	   //$(".modifica").hide();
+	  }
+    },
+    error: function(erro){
+      
+    }       
+            });
+			
+			$.ajax({
+				  
+    url : 'https://divulgabr.com.br/aplicativo/facilidades.php',
+    type : 'post',
+    data : {'id':idEmpresa},
+    dataType: 'html',
+    beforeSend: function(){ 
+	
+    },
+    timeout: 3000,    
+    success: function(retorno){
+	
+	  if(retorno != "null"){
+	  
+	  var data = JSON.parse(retorno);
+	  var item = "";
+	  
+	item +=					'<h3>Facilidades</h3>';
+	  $.each(data,function(i, data){
+
+		item +=					'<p>' + data.facilidades + '</p>';
+		
+                });
+	 
+	  $(".facilidades").html(item);
+	  }else{
+	   //$(".container-resultsOff").show();
+	   //$(".modifica").hide();
+	  }
+    },
+    error: function(erro){
+      
+    }       
+            });
+			
+			
+			$.ajax({
+				  
+    url : 'https://divulgabr.com.br/aplicativo/galeria.php',
+    type : 'post',
+    data : {'id':idEmpresa},
+    dataType: 'html',
+    beforeSend: function(){ 
+    },
+    timeout: 3000,    
+    success: function(retorno){
+	
+	  if(retorno != "null"){
+	  
+	  var data = JSON.parse(retorno);
+	  var item = "";
+	 
+	   item +=					'<h3>Galeria</h3>';
+	 
+	  $.each(data,function(i, data){
+		var link = "https://divulgabr.com.br/admin/imagens/";
+		var funcao = "exibePaginaGaleria('" + link + data.galeria + "')";
+		item +=					'<img onClick="' + funcao + '" src="https://divulgabr.com.br/admin/imagens/' + data.galeria + '"/>';		
+		item += '<p class="imagem' + data.galeria + ' " style="display:none">https://divulgabr.com.br/admin/imagens/' + data.galeria + '</p>';
+	
+                });
+	 
+	  $(".galeria").html(item);
+	  }else{
+	   //$(".container-resultsOff").show();
+	   //$(".modifica").hide();
+	  }
+    },
+    error: function(erro){
+      
+    }       
+            });
+
+	}
+	
+	// prajind
+	//canbk
+	//finolexind
+	//hathway
+	//cox&kings
+	//heg
+	
+	function distancia()
+{
+	if( distancia!=0 )
+		localizarsempre();
+}
+	
+	/*function onSuccessLocation(position) 
+        {
+        
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude; 
+		var distancia = $("distancia").val();
+		
+
+ $.ajax({
+    url : 'http://divulgabr.com.br/aplicativo/resultados.php',
+    type : 'post',
+    data : {'latitude':latitude, 'longitude': longitude,'distancia': distancia},
+    dataType: 'html',
+    beforeSend: function(){
+      //$('#carregando').fadeIn(); 
+$(".container-resultsOff").hide();	  
+    },
+    timeout: 3000,    
+    success: function(retorno){
+
+	  if(retorno != "null"){
+	  
+	  var data = JSON.parse(retorno);
+	  var item = "";
+	  
+	 
+	  $.each(data,function(i, data){
+		item += '<a onClick="exibePaginaBase('+ data.idEmpresa + ')">';
+		item += '<div class="container-results">';
+		item += '<div class="empresa">';		
+		item += '<div class="dados">';
+		item += '<p  class="nome" id="nome' + data.idEmpresa +'">' + data.nomeEmpresa + '</p>';	
+		item += '<p class="endereco">' + data.endereco + '</p>';
+		item += '<p class="telefone"><i class="fa fa-phone" aria-hidden="true"></i>' + data.telefone + '</p>';
+		item += '</div>';
+		item += '<div class="logo-empresa">';
+		item += '<img style="width:100%;" src="http://divulgabr.com.br/admin/logos/' + data.logo +'" ></div>';
+		item += '</div>';
+		item += '</div>';
+		item += '</a>';
+		item += "<div class='border'></div>";
+		
+                    //$("#estadoOption").append(data.nome)
+				
+                });		
+		
+        }
+		
+		}
+		
+		});
+		
+		
+    function onErrorLocation(error) 
+            {
+			
+			
+			if(error.code == 3){
+			   $(function () {            
+        alert('Ative o GPS');
+    });
+			}
+        //alert('code: '    + error.code    + '\n' +
+          //    'message: ' + error.message + '\n');
+        }
+    /*function localizarumavez()
+        {
+        navigator.geolocation.getCurrentPosition(onSuccessLocation, onErrorLocation);
+        }
+    function localizarsempre()
+        {
+        var watchID = navigator.geolocation.watchPosition(onSuccessLocation, onErrorLocation, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
+        }
+    function localizarsemprepausar()
+        {
+        navigator.geolocation.clearWatch(watchID);
+        }*/
+		
+		function onSuccess(position) {
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
+	var distancia = $("#distancia").val();
+
+	returnAjax(lat, lng, distancia);
+}
+
+function returnAjax(latitude, longitude, distancia){
+
+	 $.ajax({
+      url: "https://divulgabr.com.br/aplicativo/resultados.php",  
+	  type : 'post',
+    data : {'latitude':latitude, 'longitude': longitude,'distancia': distancia},
+    dataType: 'html',
+	   beforeSend: function(){
+      //$('#carregando').fadeIn(); 
+$(".container-resultsOff").hide();	  
+    },
+      success: function(ret) { 
+		 //alert(retorno);
+		 if(ret != "null"){
+	  
+	  var data = JSON.parse(ret);
+	  var item = "";
+	  
+	 
+	  $.each(data,function(i, data){
+		item += '<a onClick="exibePaginaBase('+ data.idEmpresa + ')">';
+		item += '<div class="container-results">';
+		item += '<div class="empresa">';		
+		item += '<div class="dados">';
+		item += '<p  class="nome" id="nome' + data.idEmpresa +'">' + data.nomeEmpresa + '</p>';	
+		item += '<p class="endereco">' + data.endereco + '</p>';
+		item += '<p class="telefone"><i class="fa fa-phone" aria-hidden="true"></i>' + data.telefone + '</p>';
+		item += '</div>';
+		item += '<div class="logo-empresa">';
+		item += '<img style="width:100%;" src="https://divulgabr.com.br/admin/logos/' + data.logo +'" ></div>';
+		item += '</div>';
+		item += '</div>';
+		item += '</a>';
+		item += "<div class='border'></div>";
+		
+                    //$("#estadoOption").append(data.nome)
+				
+                });	
+		$(".modifica").show();
+		$(".modifica").html(item);	
+        }else{
+	   $(".container-resultsOff").show();
+	   $(".modifica").hide();
+	  }
+
+      },
+	  
+   });
+}
+
+// onError Callback receives a PositionError object
+//
+function onError(error) {
+    alert('code: '    + error.code    + '\n' +
+          'message: ' + error.message + '\n');
+}
+		
+		function localizarsempre() {
+    // Update every 4 minute
+    var options = { maximumAge: 240000, timeout: 5000, enableHighAccuracy: true };
+    watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
+}
+	
+	function exibePaginaGaleria(idGaleria){
+		escondePaginas();
+		escondeContainer();
+		$('.aba').text('Imagem');
+		$('.container-galery').show();
+		
+		item = '<img src="' + idGaleria + '">';
+		
+		$(".imagemFull").html(item);
+	}
+	
+	function returnSearch(){
+		$('.dropdown').hide();
+		$('.container').show();
+		$('.search').show();
+		$('.preview').hide();
+		$('.aba').text('Inicio');
+		$('.container-sobre').hide();
+	}
+	
+	function voltar(){
+		$('.preview').hide();
+		$('.results').hide();
+		$('.search').show();
+		$('.container').show();
+		$('.container-sobre').hide();
+		$('.aba').text('Inicio');
+	}
+	
+	function voltarResults(){
+		$('.preview').hide();
+		$('.container').show();
+		$('.results').show();
+		$('.aba').text('Resultados');
+	}
+	
+	function voltarPreview(){
+		$('.preview').show();
+		$('.container-galery').hide();
+		$('.aba').text('Nome');
+	}
+	
+	
+	</script>
+	
+	<script type="text/javascript">
+ $(document).ready(function(){
+$.ajax({
+    url : 'https://divulgabr.com.br/aplicativo/estados.php',
+    type : 'post',
+    dataType: 'html',
+    beforeSend: function(){
+      //$('#carregando').fadeIn();  
+    },
+    timeout: 3000,    
+    success: function(retorno){
+      //$('#carregando').fadeOut();
+	  
+	  var data = JSON.parse(retorno);
+	  var item = "";
+	  item += "<option value=''>ESTADO</option>";
+	   $.each(data,function(i, data){
+		
+	    item += "<option value='"+  data.nome +"'>" + data.nome + "</option>";
+                    //$("#estadoOption").append(data.nome)
+                });
+	  $("#estado").html(item);
+    },
+    error: function(erro){
+      
+    }       
+  });
+  
+  $.ajax({
+    url : 'https://divulgabr.com.br/aplicativo/categorias.php',
+    type : 'post',
+    dataType: 'html',
+    beforeSend: function(){
+      //$('#carregando').fadeIn();  
+    },
+    timeout: 3000,    
+    success: function(retorno){
+      //$('#carregando').fadeOut();
+	  
+	  var data = JSON.parse(retorno);
+var item = "";
+	  item += "<option value=''>CATEGORIA</option>";
+	   $.each(data,function(i, data){
+		
+	    item += "<option value='" +  data.nome + "'>" + data.nome + "</option>";
+                    //$("#estadoOption").append(data.nome)
+                });
+	  $("#categorias").html(item);
+    },
+    error: function(erro){
+      
+    }       
+  });
+  $('#estado').change(function() {
+  
+  var estado = $("#estado").val();
+  //var estado = escape($("#estado").val());
+  
+  $.ajax({
+    url : 'https://divulgabr.com.br/aplicativo/cidades.php',
+    type : 'post',
+	data : {'id': estado},
+    dataType: 'html',
+    beforeSend: function(){
+      //$('#carregando').fadeIn();  
+    },
+    timeout: 3000,    
+    success: function(retorno){
+      //$('#carregando').fadeOut();
+
+	  var data = JSON.parse(retorno);
+	var item = "";
+	  item += "<option value=''>CIDADE</option>";
+	   $.each(data,function(i, data){
+		
+	    item += "<option value='" +  data.nome + "'>" + data.nome + "</option>";
+                    //$("#estadoOption").append(data.nome)
+                });
+	  $("#cidade").html(item);
+    },
+    error: function(erro){
+      
+    }       
+  });
+  });
+  
+ });
+ </script>
+</body>
+
+</html>
